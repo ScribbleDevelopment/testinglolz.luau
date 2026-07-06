@@ -1,0 +1,10 @@
+{
+  "UI": [
+    { "Text": "Fly", "Run": "Fly" },
+    { "Text": "Inf Jump", "Run": "InfJump" }
+  ],
+  "Logic": {
+    "Fly": "local p = game.Players.LocalPlayer; local h = p.Character.HumanoidRootPart; local bv = Instance.new('BodyVelocity', h); bv.MaxForce = Vector3.new(1/0, 1/0, 1/0); bv.Velocity = Vector3.new(0, 0, 0); local bg = Instance.new('BodyGyro', h); bg.MaxTorque = Vector3.new(1/0, 1/0, 1/0); bg.CFrame = h.CFrame; local cam = workspace.CurrentCamera; game:GetService('RunService').RenderStepped:Connect(function() local d = Vector3.new(); if game:GetService('UserInputService'):IsKeyDown(Enum.KeyCode.W) then d = d + cam.CFrame.LookVector end; if game:GetService('UserInputService'):IsKeyDown(Enum.KeyCode.S) then d = d - cam.CFrame.LookVector end; if game:GetService('UserInputService'):IsKeyDown(Enum.KeyCode.A) then d = d - cam.CFrame.RightVector end; if game:GetService('UserInputService'):IsKeyDown(Enum.KeyCode.D) then d = d + cam.CFrame.RightVector end; if game:GetService('UserInputService'):IsKeyDown(Enum.KeyCode.Space) then d = d + Vector3.new(0, 1, 0) end; bv.Velocity = d * 50; bg.CFrame = cam.CFrame end)",
+    "InfJump": "game:GetService('UserInputService').JumpRequest:Connect(function() game.Players.LocalPlayer.Character.Humanoid:ChangeState('Jumping') end)"
+  }
+}
